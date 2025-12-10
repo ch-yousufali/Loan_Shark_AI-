@@ -1,0 +1,5 @@
+PAYMENT OPTIONS (SAFE)
+Borrower may enroll in optional autopay for scheduled installments only.
+Autopay may be cancelled at any time by the borrower.
+Lender may not initiate withdrawals except for scheduled payments authorized by the borrower.
+No continuous authorization is granted.

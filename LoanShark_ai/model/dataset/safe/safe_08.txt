@@ -1,0 +1,21 @@
+STANDARD LOAN TERMS — SAFE
+
+Loan Amount: $10,000
+APR: 9%
+
+Fees:
+Origination Fee: 1%
+Late Fee: $25 if payment is more than 15 days late
+
+Repayment:
+Term: 36 months
+Payment Schedule: Monthly
+
+Prepayment:
+No prepayment penalty.
+
+Dispute Resolution:
+Disputes can be resolved in court under applicable law.
+
+Authorization:
+Borrower must approve any electronic debit authorization separately.

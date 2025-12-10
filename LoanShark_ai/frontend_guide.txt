@@ -1,0 +1,471 @@
+
+## 1. Big Picture – What LoanShark AI Does (In UX Terms)
+
+**One sentence for the frontend dev:**
+
+> “LoanShark AI lets a user upload or paste a loan contract, then shows a risk score and clearly highlights dangerous clauses in plain language.”
+
+From the frontend side, this boils down to:
+
+1. Let user **give us a document** (upload OR paste).
+2. Show that **we’re analyzing** it (loading state).
+3. Display **results**:
+
+   * Risk score (0–100)
+   * Risk label (Safe / Caution / High Risk / Predatory)
+   * List of reasons
+   * Highlighted text snippets
+   * Confidence and disclaimers
+4. Handle **errors** nicely (bad file, server down, etc.).
+
+Everything else (backend, ML, logic) is a black box behind an API.
+
+---
+
+## 2. Site Structure – Pages & Flows
+
+Your frontend should have *roughly* this structure:
+
+1. **Landing Page / Home**
+
+   * Hero section explaining what the tool does.
+   * Call to action: **“Scan a loan”**.
+   * Short “How it works” section.
+   * Quick legal disclaimer.
+
+2. **Analyzer Page**
+
+   * Main interactive screen.
+   * Input methods:
+
+     * Text paste
+     * File upload (PDF / image)
+   * “Analyze” button.
+   * Loading state while waiting for backend.
+   * Results section: score, label, reasons, highlights.
+
+3. **About / Learn More (optional)**
+
+   * More detailed explanation for judges and users:
+
+     * Why predatory loans are bad.
+     * What kinds of clauses we scan for.
+     * Brief “How our AI works” description (no deep tech).
+
+4. **Global layout**
+
+   * Simple header with logo + name (“LoanShark AI”).
+   * Simple footer with:
+
+     * Disclaimer
+     * Contact / GitHub / Devpost links.
+
+The **Analyzer Page** is the star of the show. Landing page sells the story, Analyzer shows the magic.
+
+---
+
+## 3. Detailed UX for Each Screen
+
+### 3.1 Landing Page (Home)
+
+**Goals:**
+
+* Make it instantly clear what LoanShark AI does.
+* Make it insanely easy to start a scan.
+
+**Sections:**
+
+1. **Header**
+
+   * Logo (simple shark/guard icon if you want).
+   * Product name: **LoanShark AI**.
+   * Navigation:
+
+     * Home
+     * Analyze
+     * About (optional)
+
+2. **Hero Section**
+
+   * Big headline:
+
+     > “Scan your loan before it bites.”
+   * Subtext:
+
+     > “Upload any loan agreement and get a Predatory Risk Score + clause warnings in under 60 seconds.”
+   * Primary button:
+
+     > “Start a Scan”
+
+     * This should navigate to the Analyzer page.
+
+   Optional: small badge like “Built for Snow Fest Hackathon”.
+
+3. **How It Works**
+
+   * 3 simple steps (visual, icons or cards):
+
+     1. Upload or paste your loan contract.
+     2. Our AI scans it for predatory clauses.
+     3. You get a risk score + explanations.
+
+4. **What We Flag (for credibility)**
+
+   * A row of 4–6 small items:
+
+     * High APR and hidden fees
+     * Rollovers and balloon payments
+     * Auto-debits and wage assignments
+     * Arbitration and legal waivers
+   * Each with a 1‑line explanation.
+
+5. **Disclaimer Section**
+
+   * Short, non-scary text:
+
+     > “LoanShark AI provides educational analysis only. It is not legal or financial advice. Always consult a qualified professional before signing a contract.”
+
+6. **Footer**
+
+   * Link to Devpost / GitHub / email.
+   * Tiny copyright.
+
+---
+
+### 3.2 Analyzer Page (Main Tool)
+
+**Main UX principle:**
+Make the scan flow **zero friction** and **super clear**.
+
+#### Layout
+
+Think of it as two main zones:
+
+* **Top**: Input area (document upload/paste + Analyze button).
+* **Bottom**: Results area (empty at first, then filled after API returns).
+
+#### Input Area
+
+Elements to include:
+
+1. **Title**
+
+   * “Analyze a Loan Agreement”
+
+2. **Short hint text**
+
+   * Example:
+
+     > “Upload a PDF/image of your loan or paste the text below. We’ll scan it for predatory clauses.”
+
+3. **Tabs or toggle for input mode** (optional but nice UX):
+
+   * Tab 1: **Upload document**
+
+     * File input that accepts PDF, PNG, JPG.
+     * Helper text:
+
+       > “Clear, single-page scans work best.”
+   * Tab 2: **Paste text**
+
+     * Large multiline textarea.
+     * Placeholder:
+
+       > “Paste the text of your loan agreement here…”
+
+4. **Analyze button**
+
+   * Prominent button:
+
+     > “Analyze this loan”
+   * Disabled if:
+
+     * No file selected AND no text in textarea.
+   * On click:
+
+     * Show loading state.
+     * Call backend API.
+
+5. **Loading state**
+
+   * While waiting for API:
+
+     * Replace Analyze button with spinner OR show overlay:
+
+       > “Analyzing your loan… This usually takes a few seconds.”
+     * Disable inputs to avoid double submissions.
+
+#### Results Area
+
+This should be **hidden or empty** until you have a result.
+
+Once the backend responds, show:
+
+1. **Overall Risk Summary Card**
+
+   * Large section at top.
+   * Show:
+
+     * **Risk label**: Safe / Caution / High Risk / Predatory
+     * **Risk score**: 0–100 (maybe as a meter/bar/circle)
+     * **Confidence**: High / Medium / Low
+   * Color suggestions (you choose exact style):
+
+     * Safe → green
+     * Caution → yellow/orange
+     * High Risk → red
+     * Predatory → dark red
+   * Short sentence under it:
+
+     * Example for High Risk:
+
+       > “This loan shows multiple signs of predatory behavior. Review the flagged clauses carefully before signing.”
+     * Example for Safe:
+
+       > “We didn’t detect major red flags. Still, consider consulting a professional for advice.”
+
+2. **Reasons / Key Warnings List**
+
+   * Section title: “Top reasons for this risk score”
+   * Use a list or cards. Each item corresponds to a backend “reason” string.
+   * For each reason, show:
+
+     * Short title tag: e.g. “High APR”, “Arbitration clause”, “Auto-debit access”.
+     * Explanation text from backend.
+   * Make these **scan-friendly**: bold keywords, short paragraphs.
+
+3. **Highlighted Snippets**
+
+   * Section title: “Flagged clauses from your contract”
+   * This comes from backend `highlights[]` (each with `text` + `category`).
+   * Show them as small cards or a list:
+
+     * Show the original snippet in quotes or code-like styling.
+     * Small label for category, e.g. “Category: Legal Trap Clause”.
+   * Optional: color-code by category (subtle).
+
+   You **don’t** have to reconstruct the full contract with inline highlights unless you want to. For MVP, listing dangerous snippets is enough.
+
+4. **Confidence & Disclaimer**
+
+   * If confidence is not “High”, show a subtle warning:
+
+     * > “Some parts of this document were hard to read (low-quality scan). Results may be incomplete.”
+   * Below everything, repeat a disclaimer:
+
+     * > “This analysis is for educational purposes only and does not constitute legal or financial advice.”
+
+5. **CTA for another scan**
+
+   * Button:
+
+     > “Scan another loan”
+   * Scrolls back to input area and resets results.
+
+#### Error States
+
+Don’t forget to handle:
+
+* **API error** (server down, timeout, invalid response):
+
+  * Show a friendly message:
+
+    > “Something went wrong during analysis. Please try again or use a clearer document.”
+  * Show a “Try again” button.
+* **Validation error** (no file or text):
+
+  * Show inline error below input:
+
+    > “Please upload a document or paste some text to analyze.”
+
+---
+
+### 3.3 About Page (Optional but nice for Devpost)
+
+Sections:
+
+1. **What is LoanShark AI?**
+
+   * Simple story: we help people understand risky loan contracts.
+
+2. **Types of red flags we detect**
+
+   * List categories in user-friendly text.
+
+3. **How the AI works (non-technical)**
+
+   * One paragraph:
+
+     > “Behind the scenes, LoanShark AI analyzes your contract for known predatory patterns (like rollover language, arbitration waivers, auto-debit rights, etc.) and combines these findings into a Predatory Risk Score. It also uses a lightweight machine learning model trained on sample contracts to refine the risk estimate. Everything runs fast and locally on the backend.”
+
+4. **Limitations**
+
+   * Mention:
+
+     * It might miss some issues.
+     * Not legal advice.
+
+This page is often read by **judges** to see how thoughtful the product is.
+
+---
+
+## 4. How the Frontend Talks to the Backend (Simple API Contract)
+
+You don’t need to know anything about ML. Just treat the backend as a service that accepts a document and returns JSON.
+
+Assume the backend exposes:
+
+### `POST /analyze`
+
+* **If sending text**:
+
+  * You’ll send JSON:
+
+    ```json
+    {
+      "text": "full loan contract text here..."
+    }
+    ```
+
+* **If sending a file**:
+
+  * You’ll send a multipart request with:
+
+    * `file` field for PDF/image.
+    * (Optionally a text field if both.)
+
+The backend will respond with JSON shaped roughly like:
+
+```json
+{
+  "score": 85,
+  "label": "Predatory",
+  "confidence": "Medium",
+  "reasons": [
+    "APR is approximately 420%, which is extremely high.",
+    "Loan allows multiple rollovers with added fees.",
+    "Mandatory arbitration clause found (you waive your right to sue)."
+  ],
+  "highlights": [
+    { "text": "Annual Percentage Rate: 420%", "category": "ExcessiveCost" },
+    { "text": "may be renewed up to 6 times", "category": "DebtCycle" },
+    { "text": "resolved exclusively by binding arbitration", "category": "LegalTrap" }
+  ]
+}
+```
+
+Your responsibilities:
+
+* Show loading while waiting.
+* If `label` comes back:
+
+  * Use it to decide colors & wording.
+* Iterate over `reasons` and `highlights` to render UI.
+
+If backend changes field names slightly, you only adjust how you read JSON — no ML knowledge needed.
+
+---
+
+## 5. Visual Style & UX Suggestions (You Decide the Stack)
+
+You can choose **any** frontend stack you like. Don’t worry about backend constraints.
+
+Some design principles that fit this product:
+
+* **Feel**:
+
+  * Professional but approachable (fintech + safety).
+  * Colors:
+
+    * Neutral backgrounds.
+    * Accent color for brand (maybe teal or deep blue).
+    * Semantic colors for risk levels.
+
+* **Typography**:
+
+  * One clean sans-serif font.
+  * Clear hierarchy:
+
+    * Big titles for risk label.
+    * Medium weight for reasons.
+    * Small but readable body text for explanations.
+
+* **Responsiveness**:
+
+  * Should work well on:
+
+    * Laptop screens (judge demo).
+    * Medium mobile screens (nice bonus).
+  * Input area and results stack vertically on mobile.
+
+* **Accessibility**:
+
+  * Good color contrast (especially for red and yellow risk states).
+  * Use actual text, not just icons, to indicate meanings (e.g., “High Risk” text plus color).
+  * Labels for inputs (file upload, text area).
+
+---
+
+## 6. Frontend Dev To-Do Checklist
+
+You can literally hand this to your UI/UX dev:
+
+1. **Global layout**
+
+   * Build header with logo + nav.
+   * Build footer with disclaimer and links.
+
+2. **Landing Page**
+
+   * Hero with:
+
+     * Title
+     * Subtitle
+     * “Start a Scan” button → navigates to Analyzer.
+   * “How it works” section (3 steps).
+   * Brief “What we flag” section (icons/cards).
+   * Disclaimer section.
+
+3. **Analyzer Page**
+
+   * Input block:
+
+     * File upload control.
+     * Text area.
+     * Analyze button with validation.
+   * Loading state (overlay/spinner + message).
+   * Results block:
+
+     * Risk band card (label + score + confidence).
+     * Reasons list.
+     * Highlight snippets.
+     * Disclaimer + “Scan another loan” button.
+   * Error state banner if API call fails.
+
+4. **About Page (optional)**
+
+   * Explanation of purpose.
+   * High-level “how it works”.
+   * Limitations.
+
+5. **API integration**
+
+   * Add function to:
+
+     * Build request (text/file).
+     * Call `/analyze`.
+     * Handle success + error responses.
+   * Map response fields to UI components.
+
+6. **Styling & polish**
+
+   * Add consistent spacing, colors, typography.
+   * Test on desktop + one mobile size.
+
+---
+
+If you want, next step I can:
+
+* Help you draft **exact microcopy** for all UI texts (headlines, tooltips, warnings),
+  *or*
+* Turn this into a more “design system” spec (component list: Button, Card, Tag, RiskBadge, etc.) so your frontend dev can build reusable pieces.

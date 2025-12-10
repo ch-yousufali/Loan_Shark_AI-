@@ -1,0 +1,4 @@
+AUTHORIZATION LIMITS (SAFE)
+Borrower authorizes electronic withdrawal only for the monthly installment amount on the due date.
+Any additional withdrawal requires separate borrower approval.
+Borrower may revoke authorization for future payments.

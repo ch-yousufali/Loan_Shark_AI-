@@ -1,0 +1,22 @@
+LOAN AGREEMENT (SAMPLE) — SAFE
+
+Loan Amount: $1,000
+APR: 18%
+
+Fees:
+Origination Fee: $10 processing fee
+Late Fee: $10 after 7 days late
+
+Repayment:
+Term: 6 months
+Payment Schedule: Bi-weekly payments
+Prepayment: No prepayment penalty.
+
+Disclosures:
+APR and fees are clearly disclosed in this agreement.
+
+Dispute Resolution:
+Either party may bring claims in local courts where permitted by law.
+
+Authorization:
+Borrower may choose payment method; no blanket authorization for electronic withdrawals.

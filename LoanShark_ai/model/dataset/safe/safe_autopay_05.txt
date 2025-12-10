@@ -1,0 +1,5 @@
+AUTOPAY CONSENT (SAFE)
+Autopay is voluntary and requires borrower consent.
+Borrower may cancel autopay at any time before the due date.
+Lender may not attempt multiple withdrawals or withdraw at any time.
+Only scheduled payments are permitted.

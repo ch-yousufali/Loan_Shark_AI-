@@ -1,0 +1,21 @@
+INSTALLMENT LOAN (SAFE) — SAFE
+
+Principal: $3,000
+APR: 26%
+
+Fees:
+Origination Fee: 2%
+Late Fee: $20 after 14 days late
+
+Repayment:
+Term: 15 months
+Payment Schedule: Monthly
+
+Prepayment:
+No prepayment fee.
+
+Legal:
+No binding arbitration requirement.
+
+Authorization:
+Borrower must authorize each electronic payment separately.

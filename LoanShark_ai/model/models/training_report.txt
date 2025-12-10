@@ -1,0 +1,12 @@
+LoanShark AI - Training Report
+==================================================
+
+Model: Logistic Regression
+Training Samples: 56
+Test Samples: 14
+Features: 31
+
+Accuracy: 0.929
+F1-Score (Predatory): 0.909
+Precision (Safe): 0.889
+Recall (Predatory): 0.833

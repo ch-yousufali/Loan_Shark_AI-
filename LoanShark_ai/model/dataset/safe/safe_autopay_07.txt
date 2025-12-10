@@ -1,0 +1,4 @@
+SCHEDULED WITHDRAWALS ONLY (SAFE)
+If borrower opts into electronic payments, withdrawals occur only on scheduled due dates.
+Unscheduled debits are not permitted.
+No continuous authorization or repeated debit attempts are allowed.

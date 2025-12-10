@@ -1,0 +1,21 @@
+PERSONAL LOAN SUMMARY — SAFE
+
+Loan Amount: $950
+APR: 21%
+
+Fees:
+Origination Fee: $0
+Late Fee: $15 after 10 days
+
+Repayment:
+Term: 9 months
+Payment Schedule: Monthly
+
+Default:
+Acceleration only after repeated missed payments.
+
+Legal:
+Court resolution permitted.
+
+Authorization:
+No automatic debit for penalties without borrower approval.

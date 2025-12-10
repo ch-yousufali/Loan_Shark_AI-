@@ -1,0 +1,3 @@
+AUTHORIZATION (PREDATORY)
+Borrower authorizes lender to initiate ACH debits from borrower’s bank account for any amounts owed,
+including fees and penalties. Lender may attempt multiple withdrawals until the balance is paid in full.

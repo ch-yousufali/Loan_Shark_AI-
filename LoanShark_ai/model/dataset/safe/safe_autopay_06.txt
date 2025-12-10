@@ -1,0 +1,4 @@
+PAYMENT METHOD CHOICE (SAFE)
+Borrower selects payment method and can change it anytime.
+No blanket authorization for continuous ACH debits is provided.
+Lender may not debit borrower’s bank account for penalties without explicit consent.

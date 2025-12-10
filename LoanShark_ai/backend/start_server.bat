@@ -1,0 +1,3 @@
+@echo off
+echo Starting LoanShark AI Backend with Python 3.13...
+py -3.13 -m uvicorn main:app --reload --host 0.0.0.0 --port 8000

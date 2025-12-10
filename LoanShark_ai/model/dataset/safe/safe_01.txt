@@ -1,0 +1,22 @@
+LOAN AGREEMENT (SAMPLE) — SAFE
+
+Loan Amount: $2,000
+Annual Percentage Rate (APR): 14%
+
+Fees:
+Origination Fee: 1% of loan amount
+Late Fee: $15 if payment is more than 10 days late
+
+Repayment:
+Term: 12 months
+Payment Schedule: Monthly payments due on the 5th of each month
+Prepayment: No prepayment penalty. Borrower may pay early without additional charges.
+
+Default:
+If Borrower misses a payment, Lender may assess the late fee stated above.
+
+Dispute Resolution:
+Disputes may be resolved in a court of competent jurisdiction. Borrower retains all legal rights.
+
+Authorization:
+Lender may not debit Borrower’s account without explicit consent for each payment.

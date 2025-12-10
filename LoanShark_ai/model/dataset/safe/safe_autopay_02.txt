@@ -1,0 +1,5 @@
+AUTOMATIC PAYMENT INFORMATION (SAFE)
+Automatic payment is available as an optional convenience feature.
+If borrower opts in, scheduled monthly installments will be processed on the due date.
+Borrower can opt out at any time.
+This does not authorize the lender to withdraw unscheduled amounts.

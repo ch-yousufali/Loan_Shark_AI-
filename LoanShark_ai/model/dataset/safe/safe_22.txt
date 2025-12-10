@@ -1,0 +1,22 @@
+CONSUMER LOAN CONTRACT — SAFE
+
+Principal: $1,100
+APR: 23%
+
+Fees:
+Origination Fee: $15
+Late Fee: $12 after 10 days late
+Returned Payment Fee: $20
+
+Repayment:
+Term: 7 months
+Payment Schedule: Bi-weekly
+
+Prepayment:
+Allowed without penalty.
+
+Legal:
+No mandatory arbitration; borrower retains right to sue.
+
+Authorization:
+No third-party contact permissions granted.

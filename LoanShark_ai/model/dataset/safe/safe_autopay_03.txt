@@ -1,0 +1,4 @@
+ELECTRONIC PAYMENTS (SAFE)
+Borrower may choose to pay by manual bank transfer, card, or check.
+Recurring payments require borrower enrollment and may be revoked with notice.
+Lender is not authorized to debit the account for fees beyond scheduled payments.

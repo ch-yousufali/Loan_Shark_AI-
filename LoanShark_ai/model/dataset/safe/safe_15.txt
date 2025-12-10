@@ -1,0 +1,21 @@
+AUTO LOAN SUMMARY — SAFE
+
+Loan Amount: $12,000
+APR: 8%
+
+Fees:
+Origination Fee: 1%
+Late Fee: $25 if more than 15 days late
+
+Repayment:
+Term: 48 months
+Payment Schedule: Monthly
+
+Prepayment:
+No prepayment penalty.
+
+Dispute Resolution:
+Borrower may pursue claims in court as permitted by law.
+
+Authorization:
+Electronic debits require borrower authorization and can be revoked.
